@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input id="random-number-box" type="text" value=" ">
+                    <button id="generate-button" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input id="input-button" type="text" value="">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div id="button-seven" class="button">7</div>
+                              <div id="button-eight" class="button">8</div>
+                              <div id="button-nine" class="button">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="button-four" class="button">4</div>
+                              <div id="button-five" class="button">5</div>
+                              <div id="button-six" class="button">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="button-one" class="button">1</div>
+                              <div id="button-two" class="button">2</div>
+                              <div id="button-three" class="button">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div id="button-del" class="button">Del</div>
+                                <div id="button-zero" class="button">0</div>
+                                <div id="button-c" class="button">C</div>
+                            </div>
+                            <div>
+                                <button id="submit-button" type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p id="not-match" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="match" class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+
+    <script>
+
+        var generateButton= document.getElementById("generate-button");
+        generateButton.addEventListener("click", function(randomNumberBox){
+            var randomNumber= parseInt(1000 + (Math. random() * 9000)); 
+            document.getElementById("random-number-box").value= randomNumber;
+        })
+
+        var buttonSeven= document.getElementById("button-seven");
+        buttonSeven.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+7;
+        })
+        var buttonEight= document.getElementById("button-eight");
+        buttonEight.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+8;
+        })
+        var buttonNine= document.getElementById("button-nine");
+        buttonNine.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+9;
+        })
+        var buttonFour= document.getElementById("button-four");
+        buttonFour.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+4;
+        })
+        var buttonFive= document.getElementById("button-five");
+        buttonFive.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+5;
+        })
+        var buttonSix= document.getElementById("button-six");
+        buttonSix.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+6;
+        })
+        var buttonOne= document.getElementById("button-one");
+        buttonOne.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+1;
+        })
+        var buttonTwo= document.getElementById("button-two");
+        buttonTwo.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+2;
+        })
+        var buttonThree= document.getElementById("button-three");
+        buttonThree.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+3;
+        })
+        var buttonZero= document.getElementById("button-zero");
+        buttonZero.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value)+0;
+        })
+
+        var buttonDel= document.getElementById("button-del");
+        buttonDel.addEventListener("click", function(){
+            var x= document.getElementById("input-button").value.length;
+            document.getElementById("input-button").value=(document.getElementById("input-button").value).replace(document.getElementById("input-button").value[x-1],"");
+        })
+
+        var buttonC= document.getElementById("button-c");
+        buttonC.addEventListener("click", function(){
+            document.getElementById("input-button").value=(document.getElementById("input-button").value).replace(document.getElementById("input-button").value,"");
+        })
+
+
+        var submitButton= document.getElementById("submit-button");
+        submitButton.addEventListener("click", function(){
+            if (document.getElementById("input-button").value == document.getElementById("random-number-box").value){
+                document.getElementById("match").style.display= "block";
+                document.getElementById("not-match").style.display= "none";
+            }
+            else{
+                document.getElementById("not-match").style.display= "block";
+                document.getElementById("match").style.display= "none";
+            }
+        })
+        
+    </script>
+</body>
+</html>
